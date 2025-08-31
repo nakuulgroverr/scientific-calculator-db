@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: calc-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: calculator_db
+      MYSQL_USER: calcuser
+      MYSQL_PASSWORD: calcpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  web:
+    build: .
+    container_name: calc-web
+    restart: always
+    ports:
+      - "5003:5000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: calcuser
+      MYSQL_PASSWORD: calcpass
+      MYSQL_DB: calculator_db
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:

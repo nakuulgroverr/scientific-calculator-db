@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scientific Calculator — Devity Summit 2025</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1 class="title">Scientific Calculator</h1>
+
+      <div class="subtitle-wrap">
+        <div class="badge">Deployed using Docker</div>
+        <div class="summit">Devity Summit 2025</div>
+        <p class="tagline">A hands-on demo: UI + Backend (Flask) running in a Docker container</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="calculator-card" aria-label="Scientific calculator">
+        <div class="display-area">
+          <div id="resultSmall" class="result-small" aria-live="polite"></div>
+          <input id="display" class="display" type="text" value="0" readonly aria-label="Calculator display" />
+        </div>
+
+        <div class="buttons" role="group" aria-label="Calculator keys">
+          <!-- Row 1 -->
+          <button data-insert="7" class="btn">7</button>
+          <button data-insert="8" class="btn">8</button>
+          <button data-insert="9" class="btn">9</button>
+          <button data-insert="/" class="btn op">÷</button>
+
+          <!-- Row 2 -->
+          <button data-insert="4" class="btn">4</button>
+          <button data-insert="5" class="btn">5</button>
+          <button data-insert="6" class="btn">6</button>
+          <button data-insert="*" class="btn op">×</button>
+
+          <!-- Row 3 -->
+          <button data-insert="1" class="btn">1</button>
+          <button data-insert="2" class="btn">2</button>
+          <button data-insert="3" class="btn">3</button>
+          <button data-insert="-" class="btn op">−</button>
+
+          <!-- Row 4 -->
+          <button data-insert="0" class="btn zero">0</button>
+          <button data-insert="." class="btn">.</button>
+          <button data-insert="+" class="btn op">+</button>
+          <button data-insert="(" class="btn">(</button>
+
+          <!-- Row 5 -->
+          <button data-insert=")" class="btn">)</button>
+          <button data-insert="**" class="btn">^</button>
+          <button data-insert="sqrt(" class="btn">√</button>
+          <button data-insert="log(" class="btn">log</button>
+
+          <!-- Row 6 (scientific) -->
+          <button data-insert="sin(" class="btn">sin</button>
+          <button data-insert="cos(" class="btn">cos</button>
+          <button data-insert="tan(" class="btn">tan</button>
+          <button id="evalBtn" class="btn equal">=</button>
+
+          <!-- Row 7 -->
+          <button id="backBtn" class="btn action">⌫</button>
+          <button id="clearBtn" class="btn clear">C</button>
+        </div>
+
+        <div class="meta-row">
+          <div class="history" id="history">No history yet</div>
+        </div>
+      </section>
+
+      <!-- 🔹 Added View History button -->
+      <div style="margin-top:20px; text-align:center;">
+        <a href="{{ url_for('view_history') }}">
+          <button class="btn">View History</button>
+        </a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="left-footer">Built with ♥ for Devity Summit</div>
+      <div class="right-footer">Made by <strong>Nakuul</strong> <span class="heart">❤️</span></div>
+    </footer>
+  </div>
+</body>
+</html>

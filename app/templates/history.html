@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculation History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Calculation History</h1>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Expression</th>
+            <th>Result</th>
+            <th>Created At</th>
+        </tr>
+        {% for row in history %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.expression }}</td>
+            <td>{{ row.result }}</td>
+            <td>{{ row.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('home') }}"><button>Back to Calculator</button></a>
+</body>
+</html>

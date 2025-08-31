@@ -1,0 +1,170 @@
+/* Modern polished look (glass + soft neumorphism). Responsive. */
+:root{
+  --bg1: #16223a;
+  --bg2: #3a4a6b;
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --accent: #6fb3ff;
+  --accent-2: #6be28b;
+  --danger: #ff6b6b;
+  --muted: rgba(255,255,255,0.75);
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:var(--font-sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(58,74,107,0.28) 0%, transparent 20%), linear-gradient(180deg,var(--bg1),var(--bg2));
+  color: #fff;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:36px;
+}
+
+/* Header / top area */
+.hero{
+  text-align:center;
+  width:100%;
+  max-width:1100px;
+  margin-bottom: 18px;
+}
+.title{
+  font-size: clamp(36px, 6vw, 72px);
+  margin: 6px 0 8px;
+  font-weight:800;
+  letter-spacing: -1px;
+  text-shadow: 0 6px 22px rgba(5,10,20,0.35);
+}
+.subtitle-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.badge{
+  background: rgba(255,255,255,0.06);
+  padding:6px 12px;
+  border-radius:999px;
+  font-weight:600;
+  color: rgba(255,255,255,0.95);
+  box-shadow: inset 0 -6px 20px rgba(0,0,0,0.25);
+  font-size:14px;
+}
+.summit{
+  font-size: clamp(18px, 3.2vw, 34px); /* larger / responsive */
+  font-weight:700;
+  margin-top:2px;
+  letter-spacing:0.4px;
+  color: rgba(255,255,255,0.95);
+}
+.tagline{
+  margin:0;
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+}
+
+/* main layout */
+.main{ width:100%; max-width:1100px; display:flex; justify-content:center; align-items:flex-start; gap:28px; }
+
+/* Calculator card */
+.calculator-card{
+  width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow:
+    0 18px 50px rgba(2,6,23,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px) saturate(110%);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transform: translateY(10px);
+}
+
+/* display */
+.display-area{ display:flex; flex-direction:column; gap:8px; }
+.result-small{ font-size:13px; color: rgba(255,255,255,0.65); min-height:18px; }
+.display{
+  width:100%;
+  height:66px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border-radius:14px;
+  border: none;
+  padding: 14px 22px;
+  font-size:22px;
+  text-align:right;
+  color: #fff;
+  box-shadow: 6px 6px 18px rgba(0,0,0,0.45), -6px -6px 18px rgba(255,255,255,0.02);
+  outline:none;
+}
+
+/* grid buttons */
+.buttons{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+}
+.btn{
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: none;
+  border-radius: 14px;
+  padding: 16px 10px;
+  font-size: 18px;
+  font-weight:700;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:
+    6px 8px 18px rgba(3,10,20,0.45),
+    -4px -4px 10px rgba(255,255,255,0.02);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s;
+}
+.btn:hover{ transform: translateY(-4px); box-shadow: 12px 16px 28px rgba(0,0,0,0.5); }
+.btn:active{ transform: translateY(1px); box-shadow: 4px 6px 12px rgba(0,0,0,0.4); }
+
+/* special sizes */
+.btn.zero{ grid-column: span 2; text-align:left; padding-left:26px; font-size:18px; }
+.btn.op{ background: linear-gradient(180deg, rgba(107,155,217,0.95), rgba(85,135,200,0.95)); color:white; }
+.btn.equal{
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--accent-2), #00a86b);
+  color: #07321a;
+  font-weight:800;
+  box-shadow: 0 18px 40px rgba(0,160,110,0.18);
+}
+.btn.clear{
+  background: linear-gradient(135deg, #ff8a7a, var(--danger));
+  color:white;
+  font-weight:800;
+}
+
+/* meta row */
+.meta-row{ display:flex; justify-content:space-between; align-items:center; margin-top:4px; }
+.history{ color: rgba(255,255,255,0.7); font-size:13px; }
+
+/* footer */
+.site-footer{
+  max-width:1100px;
+  width:100%;
+  margin-top:28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color: rgba(255,255,255,0.8);
+  font-size:14px;
+}
+.right-footer .heart{ color:#ff6b6b; margin-left:6px; animation: pulse 1.6s infinite; }
+
+/* responsive */
+@media (max-width: 880px){
+  .calculator-card{ width: 92%; padding:16px; }
+  .title{ font-size: clamp(28px, 8vw, 48px); }
+  .summit{ font-size: clamp(16px, 5vw, 26px); }
+  .btn{ padding: 14px; font-size: 16px; }
+}
+
+@keyframes pulse{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.14); }
+}
